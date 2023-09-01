@@ -1,5 +1,6 @@
-DB_HOST = 'localhost'
-DB_PORT = '5432'
-DB_USER = 'postgres'
-DB_PASSWORD = 'postgres123'
-DB_NAME = 'gestao_financeira'
+APP_VERSION = "1.0.0"
+DB_HOST = "localhost"
+DB_PORT = "5432"
+DB_USER = "postgres"
+DB_PASSWORD = "postgres123"
+DB_NAME = "gestao_financeira"

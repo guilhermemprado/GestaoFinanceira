@@ -20,7 +20,7 @@ def exists_db(conn: object, name_db: str) -> bool:
     return db_exists
 
 
-def create_data_base(conn):
+def create_data_base(conn: object):
     """create database
     Param:
         conn: Database connection.
@@ -34,7 +34,7 @@ def create_data_base(conn):
     curr.close()
 
 
-def create_table_data_base(conn):
+def create_table_data_base(conn: object):
     """
     Cria tabelas:
         person_physical: (id, person, cpf, birthdate)
@@ -177,8 +177,8 @@ def insert_default_datas(conn):
     list_all_uf = []
     list_sigla = []
     for i in resultado:
-        list_all_uf.append((i["id"], i["sigla"]))
-        list_sigla.append(i["sigla"])
+        list_all_uf.append((i["id"], i["sigla"].upper()))
+        list_sigla.append(i["sigla"].upper())
 
     sql = f"INSERT INTO uf (ibge_number, acronym) VALUES {str(list_all_uf)[1:-1]}"
 
@@ -194,9 +194,15 @@ def insert_default_datas(conn):
             f"https://brasilapi.com.br/api/ibge/municipios/v1/{uf}?providers=dados-abertos-br,gov,wikipedia",
             verify=False,
         ).json()
-
         for l in resultado:
-            list_all_uf.append((l["codigo_ibge"], l["nome"].replace("'", ""), str(l["codigo_ibge"])[0:2]))
+            try:
+                int(l["codigo_ibge"])
+                flag = True
+            except ValueError:
+                flag = False
+
+            if flag:
+                list_all_uf.append((l["codigo_ibge"], (l["nome"].upper()).replace("'", ""), str(l["codigo_ibge"])[0:2]))
 
     sql = f"INSERT INTO city (ibge_number, name, uf) VALUES {str(list_all_uf)[1:-1]}"
 
@@ -209,7 +215,7 @@ def insert_default_datas(conn):
 
     for i in resultado:
         if (i["code"]) is not None:
-            name_person = i["fullName"].replace("'", "")
+            name_person = (i["fullName"].upper()).replace("'", "")
 
             sql = f"INSERT INTO person (name) VALUES ('{name_person}') RETURNING id"
 

@@ -1,13 +1,13 @@
 import psycopg2
 from model.base import create_data_base, create_table_data_base, exists_db, insert_default_datas
 
-from api.infra.config.settings import DB_HOST, DB_NAME, DB_PASSWORD, DB_PORT, DB_USER
+from infra.config.settings import DB_HOST, DB_NAME, DB_PASSWORD, DB_PORT, DB_USER
 
 
 class Connect:
     """Database connection"""
 
-    def connect(self):
+    def postgres(self):
         """Database connection"""
         try:
             conn = self.connect_db(set_user=False)
@@ -34,7 +34,7 @@ class Connect:
         except Exception as error:
             # caso um erro fora do previsto
             error_msg = "Não foi possível conectar ao banco."
-            return {"mesage": error_msg}
+            return {"mesage": error}
 
     def connect_db(self, set_user=False):
         """Cria conexão com o banco de dados"""
