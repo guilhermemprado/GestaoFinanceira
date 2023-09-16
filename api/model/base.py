@@ -88,9 +88,9 @@ def create_table_data_base(conn: object):
         """
         CREATE TABLE IF NOT EXISTS address 
             (id SERIAL PRIMARY KEY,
-            person TEXT NOT NULL,
+            person INT NOT NULL,
             city INT NOT NULL,
-            cep VARCHAR(8) NOT NULL,
+            cep VARCHAR(9) NOT NULL,
             street VARCHAR(50) NOT NULL,
             number INT NOT NULL,
             district VARCHAR(50) NOT NULL,
