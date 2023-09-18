@@ -1,0 +1,3 @@
+[MASTER]
+disable=C0111, E501, W0012, W0018, W0718 # missing-module-docstring
+max-line-length=120

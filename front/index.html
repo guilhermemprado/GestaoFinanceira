@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <title>Projeto</title>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="title" style='font-size:50px';>
+        Movimento financeiro
+    </div>
+    <!-- Opções para adicionar um novo item -->
+    <section class="newItem" style="background: none">
+        <label id="labelIdMoviment">
+            0
+        </label>
+        <select id="selectNamePerson" name="selectNamePerson" style="background-color: rgba(255, 255, 255, 0.25)">
+            <option>Select a person</option>
+        </select>
+        <label id="labelIdPerson" hidden="false">
+            "Id Person"
+        </label>
+
+        <select id="selectNameBank" name="selectNameBank" style="background-color: rgba(255, 255, 255, 0.25)">
+            <option>Select a bank</option>
+        </select>
+        <label id="labelIdBank" hidden="false">
+            "Id Bank"
+        </label>
+
+        <select id="selectNameAgency" name="selectNameAgency" style="background-color: rgba(255, 255, 255, 0.25)">
+            <option>Select a agency</option>
+        </select>
+        <label id="labelIdAgency" hidden="false">
+            "Name Agency"
+        </label>
+
+        <select id="selectAccountNumber" name="selectAccountNumber"
+            style="background-color: rgba(255, 255, 255, 0.25)">
+            <option>Select a account</option>
+        </select>
+        <label id="labelIdAccount">
+            "Id Account"
+        </label>
+
+        <input type="text" id="inpDescription" placeholder="Description:" style="background-color: rgba(255, 255, 255, 0.25)">
+
+        <input type="text" id="inpValue" placeholder="Value:" style="background-color: rgba(255, 255, 255, 0.25)">
+
+        <input type="text" id="inpDate" placeholder="Date:" style="background-color: rgba(255, 255, 255, 0.25)">
+
+
+        <button id="btnAdicionar" onclick="btnClickAdicionar()">
+            <b>Registrar</b>
+        </button>
+    </section>
+
+    <!-- Tabela com items existentes -->
+    <section class="moviments">
+        <table id="tabMoviments" style="background-color: rgba(123, 123, 123, 0.4)">
+            <tr>
+                <th>Id</th>
+                <th>Person</th>
+                <th>Name Bank</th>
+                <th>Name agency</th>
+                <th>number account</th>
+                <th>Description</th>
+                <th>Value</th>
+                <th>Date</th>
+                <th><img src="https://cdn-icons-png.flaticon.com/512/126/126468.png" width="15px" height="15px">
+                </th>
+                <th><img src="https://cdn-icons-png.flaticon.com/512/126/126483.png" width="15px" height="15px">
+                </th>
+            </tr>
+        </table>
+    </section>
+
+    <script src="scripts.js"></script>
+
+</body>
+
+</html>

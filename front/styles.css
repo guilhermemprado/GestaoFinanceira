@@ -1,0 +1,52 @@
+.title {
+    color: rgb(173, 165, 165);
+    background-color: rgb(21, 27, 27);
+    text-align: center;
+}
+
+.newItem {
+    background-color: rgb(225, 222, 199);
+    height: 70px;
+    padding: 20px 13px;
+    color: white;
+    display: flex;
+
+}
+
+.moviments {
+    padding: 20px 13px;
+
+}
+
+.items {
+    display: flex;
+}
+
+table,
+th,
+td {
+    border: 1px solid lightslategrey;
+    position: relative;
+    padding: 5px 4px 2px 5px;
+    font-size: 16px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+}
+
+tr:hover {
+    background: rgb(200, 199, 199);
+}
+
+.delete:hover {
+    color: #f44336;
+    font-weight: bolder;
+}
+
+.update:hover {
+    color: rgb(68, 68, 227);
+    font-weight: bolder;
+}

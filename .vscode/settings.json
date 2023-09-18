@@ -1,0 +1,38 @@
+{
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "files.autoSave": "afterDelay",
+    "python.formatting.provider": "black",
+    "editor.formatOnSave": true,
+    "editor.minimap.enabled": false,
+    "autoDocstring.docstringFormat": "pep257",
+    "python.formatting.blackArgs": [
+        "--line-length",
+        "120"
+    ],
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+    },
+    "[python]": {
+        "editor.rulers": [
+            {
+                "column": 80,
+                "color": "#95eb80"
+            },
+            {
+                "column": 100,
+                "color": "#ffae00"
+            },
+            {
+                "column": 120,
+                "color": "#ff0000"
+            },
+        ],
+        "editor.defaultFormatter": "ms-python.black-formatter",
+    },
+    "python.testing.pytestArgs": [
+        "tests"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
+}
