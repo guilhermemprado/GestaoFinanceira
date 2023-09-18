@@ -29,9 +29,9 @@ def show_bank_agency(banks_agencies: List):
         result.append(
             {
                 "Id": bank_agency[0],
-                "Number agency": bank_agency[1],
-                "Name agency": bank_agency[2],
-                "Number bank": bank_agency[3],
+                "Number_agency": bank_agency[1],
+                "Name_agency": bank_agency[2],
+                "Number_bank": bank_agency[3],
             }
         )
 

@@ -57,9 +57,9 @@ def create_table_data_base(conn: object):
         """
         CREATE TABLE IF NOT EXISTS person_physical 
             (id SERIAL PRIMARY KEY,
-            person TEXT NOT NULL,
-            cpf VARCHAR(11) NOT NULL,
-            birthdate VARCHAR(8) NOT NULL)
+            person INTEGER NOT NULL,
+            cpf VARCHAR(11),
+            birthdate VARCHAR(8))
     """
     )
 
@@ -210,7 +210,6 @@ def insert_default_datas(conn):
 
     conn.commit()
 
-    # Person
     resultado = requests.get("https://brasilapi.com.br/api/banks/v1", verify=False).json()
 
     for i in resultado:
@@ -232,6 +231,43 @@ def insert_default_datas(conn):
             curr.execute(sql)
 
             conn.commit()
+
+    arquivo_account = open("api/docs/insert_bank_account.txt", "r")
+    arquivo_agency = open("api/docs/insert_bank_agency.txt", "r")
+    arquivo_person = open("api/docs/insert_person.txt", "r")
+    arquivo_person_physical = open("api/docs/insert_person_physical.txt", "r")
+
+    for l_account in arquivo_account:
+        sql = arquivo_agency.readline()
+
+        curr.execute(sql)
+        conn.commit()
+
+        last_id_agency = curr.fetchone()
+
+        sql = arquivo_person.readline()
+
+        curr.execute(sql)
+        conn.commit()
+
+        last_id_person = curr.fetchone()
+
+        sql = arquivo_person_physical.readline()
+
+        sql = sql.replace("codigo_person_physical", str(last_id_person[0]))
+
+        curr.execute(sql)
+        conn.commit()
+
+        sql_old = l_account
+
+        sql_old = sql_old.replace("codigo_person", str(last_id_person[0]))
+        sql_new = sql_old.replace("codigo_agency", str(last_id_agency[0]))
+
+        curr.execute(sql_new)
+        conn.commit()
+
+    conn.close()
 
 
 Base = declarative_base()

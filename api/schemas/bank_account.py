@@ -31,8 +31,8 @@ def show_bank_account(banks_accounts: List):
                 "Id": bank_account[0],
                 "Account": bank_account[1],
                 "Person": bank_account[2],
-                "Name person": bank_account[3],
-                "Agency number": bank_account[4],
+                "Name_person": bank_account[3],
+                "Agency_number": bank_account[4],
             }
         )
 

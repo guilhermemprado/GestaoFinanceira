@@ -1,0 +1,17 @@
+INSERT INTO bank_agency (bank, agency_number, name) VALUES (1, 3097, 'BARRA DA TIJUCA') RETURNING id
+INSERT INTO bank_agency (bank, agency_number, name) VALUES (208, 0097, 'BOTAFOGO') RETURNING id
+INSERT INTO bank_agency (bank, agency_number, name) VALUES (1, 2975, 'CENTRO') RETURNING id
+INSERT INTO bank_agency (bank, agency_number, name) VALUES (1, 0127, 'CAMPO GRANDE') RETURNING id
+INSERT INTO bank_agency (bank, agency_number, name) VALUES (341, 0125, 'CENTRO') RETURNING id
+INSERT INTO bank_agency (bank, agency_number, name) VALUES (341, 3322, 'COPACABANA') RETURNING id
+INSERT INTO bank_agency (bank, agency_number, name) VALUES (341, 0909, 'LARANJEIRAS') RETURNING id
+INSERT INTO bank_agency (bank, agency_number, name) VALUES (289, 792, 'AEROPORTO') RETURNING id
+INSERT INTO bank_agency (bank, agency_number, name) VALUES (289, 8207, 'PENHA') RETURNING id
+INSERT INTO bank_agency (bank, agency_number, name) VALUES (7, 3241, 'VILA ISABEL') RETURNING id
+INSERT INTO bank_agency (bank, agency_number, name) VALUES (7, 1027, 'JACARE') RETURNING id
+INSERT INTO bank_agency (bank, agency_number, name) VALUES (281, 0006, 'CENTRO') RETURNING id
+INSERT INTO bank_agency (bank, agency_number, name) VALUES (281, 0001, 'GALEAO') RETURNING id
+INSERT INTO bank_agency (bank, agency_number, name) VALUES (293, 1107, 'VISTA ALEGRE') RETURNING id
+INSERT INTO bank_agency (bank, agency_number, name) VALUES (293, 2793, 'ANDARAI') RETURNING id
+INSERT INTO bank_agency (bank, agency_number, name) VALUES (208, 0093, 'CENTRO') RETURNING id
+INSERT INTO bank_agency (bank, agency_number, name) VALUES (196, 0079, 'GAVEA') RETURNING id

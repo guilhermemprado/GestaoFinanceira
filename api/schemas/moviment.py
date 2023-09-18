@@ -39,9 +39,16 @@ def show_moviments(moviments: List):
     for moviment in moviments:
         result.append(
             {
-                "Account number": moviment[0],
-                "Description": moviment[1],
-                "Date": moviment[2],
+                "Id_moviment": moviment[0],
+                "Id_person": moviment[1],
+                "Name_person": moviment[2],
+                "Id_bank": moviment[3],
+                "Name_bank": moviment[4],
+                "Name_agency": moviment[5],
+                "Account_number": moviment[6],
+                "Description": moviment[7],
+                "Value": moviment[8],
+                "Date": moviment[9],
             }
         )
 

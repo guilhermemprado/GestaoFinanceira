@@ -17,7 +17,11 @@ def search_person(
     """
     curr = conn.cursor()
 
-    sql = "SELECT person.id, person.name, person.email, person.phone_number FROM person"
+    sql = """
+            SELECT person.id, person.name, person.email, person.phone_number FROM person
+            INNER JOIN person_physical
+            ON person_physical.person = person.id
+        """
 
     if id > 0:
         sql += f" WHERE person.id = {id}"

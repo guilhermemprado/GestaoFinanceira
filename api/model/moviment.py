@@ -17,11 +17,21 @@ def search_moviments(
     curr = conn.cursor()
 
     sql = """
-            SELECT moviment.bank_account, bank_account.account_number,
-                moviment.description, moviment.value, moviment.date
+            SELECT moviment.id as id_moviment, 
+                bank_account.person as id_person,
+                (SELECT name FROM person WHERE person.id = bank_account.person) as name_person,
+                bank_agency.bank as id_bank,
+                (SELECT name FROM person WHERE person.id = bank_agency.bank) as name_bank,
+                bank_agency.name as name_agency,
+                bank_account.account_number,
+                moviment.description,
+                moviment.value,
+                moviment.date
             FROM moviment
             INNER JOIN bank_account
             ON moviment.bank_account = bank_account.id
+            INNER JOIN bank_agency
+            ON bank_account.agency = bank_agency.id
         """
     if account_number > 0:
         if sql.find("WHERE") != -1:
@@ -98,11 +108,21 @@ def record_moviment(
     id_moviment = list(map(list, curr.fetchall()))
 
     sql = f"""
-            SELECT moviment.bank_account, bank_account.account_number,
-                moviment.description, moviment.value, moviment.date
+            SELECT moviment.id as id_moviment,
+                bank_account.person as id_person,
+                (SELECT name FROM person WHERE person.id = bank_account.person) as name_person,
+                bank_agency.bank as id_bank,
+                (SELECT name FROM person WHERE person.id = bank_agency.bank) as name_bank,
+                bank_agency.name as name_agency,
+                bank_account.account_number,
+                moviment.description,
+                moviment.value,
+                moviment.date
             FROM moviment
             INNER JOIN bank_account
             ON moviment.bank_account = bank_account.id
+            INNER JOIN bank_agency
+            ON bank_account.agency = bank_agency.id
             WHERE moviment.id = {id_moviment[0][0]}
         """
     curr.execute(sql)
@@ -112,6 +132,7 @@ def record_moviment(
     curr.close()
 
     return moviment
+
 
 def exclude_moviment(conn: object, id_moviment: int = 0) -> list:
     """Searches the moviment in the database.
