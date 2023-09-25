@@ -110,3 +110,5 @@ Você pode gerenciar o contêiner Postgres utilizando comandos Docker. Aqui est�
 
 
 >Para mais comandos, veja: (https://www.gasparbarancelli.com/post/passo-a-passo-como-criar-e-executar-um-container-postgres-com-docker).
+
+>Diagrama base de dados: (https://github.com/guilhermemprado/GestaoFinanceira/blob/master/api/docs/Diagrama%20base%20de%20dados.jpg).
