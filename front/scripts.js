@@ -28,7 +28,6 @@ const onclickPerson = async () => {
 person.onclick = onclickPerson;
 
 const onclickBank = async () => {
-    // Removes all options from the list.
     while (agency.options.length > 0) {
         agency.remove(0);
     }
@@ -39,8 +38,8 @@ const onclickBank = async () => {
 
 bank.onclick = onclickBank;
 
+
 const onclickAgency = async () => {
-    // Removes all options from the list.
     while (account.options.length > 0) {
         account.remove(0);
     }
@@ -63,7 +62,7 @@ const getPostPerson = async () => {
     return data;
 };
 
-const onclickAccount = async () => {
+const onclickAccount = async () => {    
     labelIdAccount.textContent = account.value;
 }
 
@@ -120,19 +119,21 @@ const getPostAgency = async () => {
 };
 
 const displayOptionAgency = async () => {
+
     // Calls the function that gets the data from the agency
     let dados = await getPostAgency();
-    let options = await dados["Banks agencies"].filter(dados => dados.Number_bank.toString() === labelIdBank.textContent);
-
+    const options = await dados["Banks agencies"].filter(dados => dados.Number_bank.toString() === labelIdBank.textContent);
+    
     // First record is always the field name and title, by default
     const newOption = document.createElement("option");
+    newOption.text = "Select a agency";
     agency.appendChild(newOption);
 
     // Load the select with the agency data
     for (let option of options) {
         const newOption = document.createElement("option");
-        newOption.value = option.Id;
-        newOption.text = option.Name_agency;
+        newOption.value = option.Number_agency;
+        newOption.text = option.Name_agency.toString();
         agency.appendChild(newOption);
     }
 
@@ -296,17 +297,19 @@ const BuscaMoviment = async () => {
     for (i = 0; i < update.length; i++) {
         update[i].onclick = async function () {
             let div = this.parentElement.parentElement;
-            const idMoviment = div.getElementsByTagName('td')[0].innerHTML
+            const idMoviment = div.getElementsByTagName('td')[0].innerHTML;
 
-            labelIdMoviment.textContent = idMoviment
+            labelIdMoviment.textContent = idMoviment;
 
             selectdUpdatePerson(div);
 
             selectdUpdateBank(div);
+            await onclickAgency();
 
             selectdUpdateAgency(div);
+            await onclickAccount();
 
-      
+            selectdUpdateAccount(div);
 
             document.getElementById("inpDescription").value = div.getElementsByTagName('td')[5].innerHTML
             document.getElementById("inpValue").value = div.getElementsByTagName('td')[6].innerHTML
@@ -338,14 +341,25 @@ const selectdUpdateBank = (objeto) => {
 };
 
 const selectdUpdateAgency = (objeto) => {
+    let select = document.querySelector('#selectNameAgency');
     for (let iLine = 0; iLine < select.options.length; iLine++) {
-        if (agency.options[iLine].text === objeto.getElementsByTagName('td')[3].innerHTML) {
-            console.log('Chegou aqui...')
-            agency.options.selectedIndex = iLine;
+        if (select.options[iLine].text === objeto.getElementsByTagName('td')[3].innerHTML) {
+            select.selectedIndex = iLine;
             break;
         };
     };
     onclickAgency();
+};
+
+const selectdUpdateAccount = (objeto) => {
+    let select = document.querySelector('#selectAccountNumber');
+    for (let iLine = 0; iLine < select.options.length; iLine++) {
+        if (select.options[iLine].text === objeto.getElementsByTagName('td')[4].innerHTML) {
+            select.selectedIndex = iLine;
+            break;
+        };
+    };
+    onclickAccount();
 };
 
 const deleteItem = (item) => {

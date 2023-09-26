@@ -232,10 +232,10 @@ def insert_default_datas(conn):
 
             conn.commit()
 
-    arquivo_account = open("api/docs/insert_bank_account.txt", "r")
-    arquivo_agency = open("api/docs/insert_bank_agency.txt", "r")
-    arquivo_person = open("api/docs/insert_person.txt", "r")
-    arquivo_person_physical = open("api/docs/insert_person_physical.txt", "r")
+    arquivo_account = open("docs/insert_bank_account.txt", "r")
+    arquivo_agency = open("docs/insert_bank_agency.txt", "r")
+    arquivo_person = open("docs/insert_person.txt", "r")
+    arquivo_person_physical = open("docs/insert_person_physical.txt", "r")
 
     for l_account in arquivo_account:
         sql = arquivo_agency.readline()
@@ -266,6 +266,23 @@ def insert_default_datas(conn):
 
         curr.execute(sql_new)
         conn.commit()
+
+    arquivo_account.close()
+    arquivo_agency.close()
+    arquivo_person.close()
+    arquivo_person_physical.close()
+
+    sql = """
+            INSERT INTO moviment (bank_account, description, value, date)
+            VALUES (1, 'TAXA BANCO', 7.9, '30082023'),
+                    (5, 'TAXA TRANSFERENCIA', 1.19, '05092023'),
+                    (9, 'PAGAMENTO FATURA CARTAO', 1983.67, '15092023'),
+                    (7, 'TAXA UNIVERSAL', 4.98, '30082023')
+        """
+
+    curr.execute(sql)
+
+    conn.commit()
 
     conn.close()
 
